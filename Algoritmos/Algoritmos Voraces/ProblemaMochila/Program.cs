@@ -29,9 +29,9 @@ namespace ProblemaMochila
                 if (i + 1 < items.Count)
                     siguiente = items[i + 1];
                 
-                Item item = itemActual;
+                var item = itemActual;
                 
-                if (siguiente?.Tamaño <= itemActual.Tamaño && siguiente != null)
+                if (siguiente != null && siguiente?.Tamaño <= itemActual.Tamaño)
                     item = siguiente;
 
                 if (item.Tamaño > mochila.Capacidad)

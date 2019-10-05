@@ -7,6 +7,7 @@
     <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
     <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
