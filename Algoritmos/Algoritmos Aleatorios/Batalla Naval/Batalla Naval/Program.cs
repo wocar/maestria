@@ -7,7 +7,7 @@ namespace Batalla_Naval
 {
     class Program
     {
-        private const int TamañoX = 140;
+        private const int TamañoX = 15;
         private const int TamañoY = 5;
 
 
@@ -59,9 +59,9 @@ namespace Batalla_Naval
 
 
                 Console.Clear();
-                //ImprimirBarcos();
+                ImprimirBarcos();
                 ImprimirIntentos(resultados);
-                //Thread.Sleep(10);
+                Thread.Sleep(100);
                 if (VerificarGanar(resultados))
                     break;
             }
