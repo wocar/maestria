@@ -61,6 +61,7 @@ namespace Batalla_Naval
                 Console.Clear();
                 ImprimirBarcos();
                 ImprimirIntentos(resultados);
+                Thread.Sleep(100);
                 if (VerificarGanar(resultados))
                     break;
             }
