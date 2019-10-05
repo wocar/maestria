@@ -19,7 +19,6 @@
       <e p="src" t="Include" />
       <e p="Tarea 5.sln" t="IncludeFlat" />
       <e p="Tarea5" t="IncludeRecursive">
-        <e p=".gitignore" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
