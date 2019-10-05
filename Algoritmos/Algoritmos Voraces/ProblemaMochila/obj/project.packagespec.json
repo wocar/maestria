@@ -1,0 +1,45 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/Users/william/Projects17/Maestría/GitHub/Algoritmos/Algoritmos Voraces/ProblemaMochila/ProblemaMochila.csproj",
+    "projectName": "ProblemaMochila",
+    "projectPath": "/Users/william/Projects17/Maestría/GitHub/Algoritmos/Algoritmos Voraces/ProblemaMochila/ProblemaMochila.csproj",
+    "outputPath": "/Users/william/Projects17/Maestría/GitHub/Algoritmos/Algoritmos Voraces/ProblemaMochila/obj/",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp3.0"
+    ],
+    "sources": {
+      "/Users/william/Projects17/LegacyRepo/devextreme": {},
+      "https://api.nuget.org/v3/index.json": {},
+      "https://pkgs.dev.azure.com/obandosoft/_packaging/DevExtreme/nuget/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp3.0": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp3.0": {
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}
