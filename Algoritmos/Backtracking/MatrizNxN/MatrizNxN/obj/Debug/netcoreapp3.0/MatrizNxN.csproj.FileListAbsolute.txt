@@ -1,0 +1,8 @@
+/Users/william/Projects17/Maestría/GitHub/Algoritmos/Backtracking/MatrizNxN/MatrizNxN/obj/Debug/netcoreapp3.0/MatrizNxN.csprojAssemblyReference.cache
+/Users/william/Projects17/Maestría/GitHub/Algoritmos/Backtracking/MatrizNxN/MatrizNxN/obj/Debug/netcoreapp3.0/MatrizNxN.AssemblyInfoInputs.cache
+/Users/william/Projects17/Maestría/GitHub/Algoritmos/Backtracking/MatrizNxN/MatrizNxN/obj/Debug/netcoreapp3.0/MatrizNxN.AssemblyInfo.cs
+/Users/william/Projects17/Maestría/GitHub/Algoritmos/Backtracking/MatrizNxN/MatrizNxN/bin/Debug/netcoreapp3.0/MatrizNxN
+/Users/william/Projects17/Maestría/GitHub/Algoritmos/Backtracking/MatrizNxN/MatrizNxN/bin/Debug/netcoreapp3.0/MatrizNxN.dll
+/Users/william/Projects17/Maestría/GitHub/Algoritmos/Backtracking/MatrizNxN/MatrizNxN/bin/Debug/netcoreapp3.0/MatrizNxN.pdb
+/Users/william/Projects17/Maestría/GitHub/Algoritmos/Backtracking/MatrizNxN/MatrizNxN/obj/Debug/netcoreapp3.0/MatrizNxN.dll
+/Users/william/Projects17/Maestría/GitHub/Algoritmos/Backtracking/MatrizNxN/MatrizNxN/obj/Debug/netcoreapp3.0/MatrizNxN.pdb

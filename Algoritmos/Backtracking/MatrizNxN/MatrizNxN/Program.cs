@@ -9,96 +9,130 @@ namespace MatrizNxN
     class Program
     {
         private static readonly Random _random = new Random();
+        public static int ValorMaximo = 6;
 
+        static int n = 3;
 
         static void Main(string[] args)
         {
-            var n = 4;
             var matriz = new int[n][];
             for (var i = 0; i < n; i++) matriz[i] = new int[n];
-            var soluciones = new LinkedList<Solucion>();
 
-            var coordenadas = new Point(-1, -1);
-            var direccion = true;
+            BackTrack(matriz);
+        }
 
-            var backtrack = new Point(matriz.Length - 1, matriz.Length - 1);
+        private static int c = 0;
+        private static void BackTrack(int[][] matriz, Point? inicio = null)
+        {
+            var coordenadas = inicio ?? new Point(-1, -1);
+
+            var backtrack = Null;
             while (true)
             {
-                var siguiente = Siguiente(coordenadas, matriz);
-
+                var siguiente = Siguiente(coordenadas);
                 if (siguiente == Null)
                 {
-                    backtrack = Anterior(backtrack, matriz);
+                    if (backtrack == Null)
+                        backtrack = coordenadas;
+                    backtrack = Anterior(backtrack);
                     if (backtrack == Null)
                     {
-                        backtrack = new Point(matriz.Length - 1, matriz.Length - 1);
-                        coordenadas = new Point(-1, -1);
-                        continue;
-                    }
+                        backtrack = new Point(n-1,n-1);
+                        c++;
 
+                    }
                     coordenadas = backtrack;
                     continue;
                 }
+          
+                var posibleSolicion = GenerarSolucion(siguiente, matriz);
+                matriz.PrintArray(coordenadas, backtrack);
+                var solucion = posibleSolicion;
+                if (posibleSolicion == SinSolucion)
+                {
+                    coordenadas = Anterior(backtrack);
+                    solucion = _random.Next(1, ValorMaximo);
 
+                    if (matriz[siguiente.Y][siguiente.X] > 0 && backtrack == coordenadas)
+                    {
+                        backtrack = Anterior(backtrack);
+                        continue;
+                    }
+                }
 
-                var solucion = GenerarSolucion(siguiente, matriz);
-                matriz[siguiente.Y][siguiente.X] = solucion.Valor;
+                
+
+                matriz[siguiente.Y][siguiente.X] = solucion;
                 matriz.PrintArray(siguiente, backtrack);
-                Thread.Sleep(5000);
+                Console.WriteLine("Intentos: " + c);
+                Thread.Sleep(100);
 
                 if (matriz.SumasIguales())
                     break;
-
+ 
                 coordenadas = siguiente;
             }
         }
+        
 
-
-        private static Solucion GenerarSolucion(Point coordenadas, IReadOnlyList<int[]> matriz)
+        private static int GenerarSolucion(Point coordenadas, int[][] matriz)
         {
             var arr = new List<int[]>();
             arr.AddRange(matriz.Select(g => (int[]) g.Clone()).ToList());
 
-            for (int i = 1; i <= 4; i++)
+            for (var i = arr[coordenadas.Y][coordenadas.X]; i <= ValorMaximo; i++)
             {
+                if (arr[coordenadas.Y][coordenadas.X] == i)
+                    continue;
                 arr[coordenadas.Y][coordenadas.X] = i;
-                var sumaFila = arr[coordenadas.Y].Sum();
-                var sumaColumna = arr.Sum(g => g[coordenadas.X]);
-                if (sumaFila == sumaColumna)
+                arr.PrintArray(coordenadas, Null, currentColor: ConsoleColor.Yellow);
+                if (ValidarSumas(coordenadas, arr))
                 {
-                    return new Solucion(coordenadas, i);
+                    return i;
                 }
             }
 
-            return new Solucion(coordenadas, SinSolucion);
+         
+            arr[coordenadas.Y][coordenadas.X] = -0;
+            arr.PrintArray(coordenadas, Null, currentColor:ConsoleColor.Red);
 
-            //return new Solucion(coordenadas, _random.Next(1, 4));
+            return SinSolucion;
+        }
+
+        private static bool ValidarSumas(Point coordenadas, List<int[]> arr)
+        {
+            var sumaFila = arr[coordenadas.Y].Sum();
+            var sumaColumna = arr.Sum(g => g[coordenadas.X]);
+            return sumaColumna == sumaFila;
         }
 
         public static int SinSolucion = -1337;
 
-        private static Point Siguiente(Point punto, int[][] matriz)
+        private static Point Siguiente(Point punto)
         {
             if (punto.X == -1 && punto.Y == -1)
                 return new Point(0, 0);
-            if (punto.X + 1 < matriz.Length)
+            if (punto.X + 1 < n)
                 return new Point(punto.X + 1, punto.Y);
-            if (punto.Y + 1 < matriz.Length)
+            if (punto.Y + 1 < n)
                 return new Point(0, punto.Y + 1);
 
             return Null;
         }
-        private static Point Anterior(Point punto, int[][] matriz)
+
+        private static Point Anterior(Point punto)
         {
             if (punto.IsEmpty)
-                return Null;
+                return new Point(-1, 0);
+
             if (punto.X > 0)
                 return new Point(punto.X - 1, punto.Y);
             if (punto.X <= 0)
-                return new Point(matriz.Length, punto.Y - 1);
+                return punto.Y == 0 ? Null : new Point(n, punto.Y - 1);
             return Null;
         }
-        private static readonly Point Null = new Point(-2, -2);
 
+        private static readonly Point Null = new Point(-2, -2);
+        private static readonly Point Ultimo = new Point(-3, -3);
     }
 }
