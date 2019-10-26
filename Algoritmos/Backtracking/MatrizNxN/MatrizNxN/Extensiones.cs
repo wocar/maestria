@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
@@ -13,24 +14,24 @@ namespace MatrizNxN
             if (sumas.Any(g => g == 0)) return false;
             return sumas.Distinct().Count() == 1;
         }
-        public static void PrintArray(this int[][] matriz, Point current, Point backtrack)
+        public static void PrintArray(this IReadOnlyList<int[]> matriz, Point current, Point backtrack, ConsoleColor currentColor = ConsoleColor.Blue)
         {
             Console.Clear();
-            for (var index = 0; index < matriz.Length; index++)
+            for (var index = 0; index < matriz.Count; index++)
             {
                 var t = matriz[index];
-                for (var j = 0; j < matriz.Length; j++)
+                for (var j = 0; j < matriz.Count; j++)
                 {
                     var point = new Point(j, index);
                     if (point == current && current != backtrack)
                     {
-                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.BackgroundColor = currentColor;
                         Console.ForegroundColor = ConsoleColor.White;
                     }
 
                     if (point == backtrack)
                     {
-                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
                         Console.ForegroundColor = ConsoleColor.White;
                     }
 
@@ -47,7 +48,7 @@ namespace MatrizNxN
                 Console.WriteLine();
             }
 
-            for (var i = 0; i < matriz.Length; i++)
+            for (var i = 0; i < matriz.Count; i++)
             {
                 Console.BackgroundColor = ConsoleColor.Green;
                 Console.ForegroundColor = ConsoleColor.White;
